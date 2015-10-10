@@ -9,12 +9,11 @@ import scala.xml.NodeSeq
 
 class ChatSnippet extends Logger {
   def render() : NodeSeq = {
-    val funcs: List[RoundTripInfo] = List("sendMessage" -> sendMessage _, "getMessages" -> sendMessage _)
+    val funcs: List[RoundTripInfo] = List("sendMessage" -> sendMessage _, "getMessages" -> getMessages _)
 
     for {
       session <- S.session
     } {
-      println("Adding pageFuncitonD")
       S.appendGlobalJs(JsRaw(s"var pageFunctions = ${session.buildRoundtrip(funcs).toJsCmd}").cmd)
     }
     NodeSeq.Empty
@@ -29,11 +28,11 @@ class ChatSnippet extends Logger {
 
     (value \ "name", value \ "text") match {
       case (JString(name), JString(text)) =>
-        _logger.debug(s"Getting $text from $name")
+        println(s"Getting $text from $name")
         ChatManager.newMessage(Message(name, text))
 
       case _ =>
-        _logger.debug("Error")
+        println("Error")
     }
   }
 }
