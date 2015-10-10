@@ -1,1 +1,11 @@
 .nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+
+.chat {
+  height:100%;
+  max-height:500px;
+  overflow-y:auto;
+}
+
+.chat-input{
+  width: 100% !important;
+}
