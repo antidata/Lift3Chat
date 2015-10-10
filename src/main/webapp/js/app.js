@@ -6,6 +6,24 @@ angular
     $scope.user = null;
     $scope.name = "";
     $scope.password = "";
+    $scope.messages = [{name:"alejo", text:"hoasiodaio"},
+    {name:"admin", text:"hoasiodaio"},
+    {name:"o", text:"hoasiodaio"},
+    {name:"Juan", text:"hoasiodaio"},
+    {name:"alejo", text:"hoasiodaio"},
+        {name:"o", text:"hoasiodaio"},
+        {name:"Juan", text:"hoasiodaio"},
+        {name:"alejo", text:"hoasiodaio"},
+            {name:"o", text:"hoasiodaio"},
+            {name:"Juan", text:"hoasiodaio"},
+            {name:"alejo", text:"hoasiodaio"},
+                {name:"o", text:"hoasiodaio"},
+                {name:"Juan", text:"hoasiodaio"},
+                {name:"alejo", text:"hoasiodaio"},
+                    {name:"o", text:"hoasiodaio"},
+                    {name:"Juan", text:"hoasiodaio"},
+    {name:"alejo", text:"dansduiqghrui3qb 3q3 </br> BRAVO!"}
+    ];
 
     $scope.logUserIn = function() {
       console.log('User: ' + $scope.name + ' Password: ' + $scope.password);
@@ -21,5 +39,10 @@ angular
 
     $scope.sendMessage = function() {
 
+    };
+
+
+    $scope.getMessageStyle = function(name) {
+      return $scope.user.name == name ? "color:blue;" : "color:red;";
     };
   });
