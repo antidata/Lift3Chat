@@ -5,25 +5,9 @@ angular
 
     $scope.user = null;
     $scope.name = "";
+    $scope.message = "";
     $scope.password = "";
-    $scope.messages = [{name:"alejo", text:"hoasiodaio"},
-    {name:"admin", text:"hoasiodaio"},
-    {name:"o", text:"hoasiodaio"},
-    {name:"Juan", text:"hoasiodaio"},
-    {name:"alejo", text:"hoasiodaio"},
-        {name:"o", text:"hoasiodaio"},
-        {name:"Juan", text:"hoasiodaio"},
-        {name:"alejo", text:"hoasiodaio"},
-            {name:"o", text:"hoasiodaio"},
-            {name:"Juan", text:"hoasiodaio"},
-            {name:"alejo", text:"hoasiodaio"},
-                {name:"o", text:"hoasiodaio"},
-                {name:"Juan", text:"hoasiodaio"},
-                {name:"alejo", text:"hoasiodaio"},
-                    {name:"o", text:"hoasiodaio"},
-                    {name:"Juan", text:"hoasiodaio"},
-    {name:"alejo", text:"dansduiqghrui3qb 3q3 </br> BRAVO!"}
-    ];
+    $scope.messages = [];
 
     $scope.logUserIn = function() {
       console.log('User: ' + $scope.name + ' Password: ' + $scope.password);
@@ -33,12 +17,21 @@ angular
 
     $scope.getMessages = function() {
       // Call server func / Roundtrip
-
-
+      var promise = pageFunctions.getMessages();
+      promise.then(function(data) {
+        $scope.$apply(function() {
+          $scope.messages = $scope.messages + data;
+        })
+      });
     };
 
     $scope.sendMessage = function() {
-
+      var promise = pageFunctions.sendMessage({name: $scope.user.name, text: $scope.message});
+      promise.then(function(data) {
+        $scope.$apply(function() {
+          $scope.messages = $scope.messages + data;
+        })
+      });
     };
 
 
