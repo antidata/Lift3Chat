@@ -14,7 +14,8 @@ class ChatSnippet extends Logger {
     for {
       session <- S.session
     } {
-      S.appendJs(JsRaw(s"var pageFunctions = ${session.buildRoundtrip(funcs).toJsCmd}").cmd)
+      println("Adding pageFuncitonD")
+      S.appendGlobalJs(JsRaw(s"var pageFunctions = ${session.buildRoundtrip(funcs).toJsCmd}").cmd)
     }
     NodeSeq.Empty
   }
