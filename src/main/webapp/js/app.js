@@ -43,6 +43,6 @@ angular
 
 
     $scope.getMessageStyle = function(name) {
-      return $scope.user.name == name ? "color:blue;" : "color:red;";
+      return $scope.user.name == name ? "color:blue; text-align:right;" : "color:red;";
     };
   });
