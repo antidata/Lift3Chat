@@ -15,11 +15,20 @@ angular
 
     $scope.getMessages = function() {
       // Call server func / Roundtrip
-
-
+      var promise = pageFunctions.getMessages();
+      promise.then(function(data) {
+        $scope.$apply(function() {
+          $scope.messages = $scope.messages + data;
+        })
+      });
     };
 
-    $scope.sendMessage = function() {
-
+    $scope.sendMessage = function(text) {
+      var promise = pageFunctions.sendMessage({name: $scope.user.name, text: text});
+      promise.then(function(data) {
+        $scope.$apply(function() {
+          $scope.messages = $scope.messages + data;
+        })
+      });
     };
   });
