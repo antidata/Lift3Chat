@@ -34,6 +34,10 @@ angular
       $scope.message = '';
     };
 
+    $scope.toBottom = function() {
+      var objDiv = document.getElementById("chatDiv");
+      objDiv.scrollTop = objDiv.scrollHeight;
+    };
 
     $scope.getMessageStyle = function(name) {
       return ($scope.user != null && $scope.user.name == name) ? "color:blue; text-align:right;" : "color:red;";
