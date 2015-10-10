@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Lift 3 Chat app</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="/css/app.css" rel="stylesheet">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+
+<body ng-app="LiftChat">
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Lift 3 chat</a>
+        </div>
+    </div><!-- /.container-fluid -->
+</nav>
+<div class="row" ng-show="!user">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                <h3 class="panel-title">Super Lift 3 chat</h3>
+            </div>
+            <div class="panel-body">
+                <form>
+                    <div class="form-group">
+                        <label for="nameid">Name</label>
+                        <input type="text" class="form-control" id="nameid" placeholder="Nickname" ng-model="name">
+                    </div>
+                    <div class="form-group">
+                        <label for="passid">Password</label>
+                        <input type="password" class="form-control" id="passid" placeholder="Password" ng-model="password">
+                    </div>
+                    <button type="submit" class="btn btn-default" ng-submit="logUserIn()">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row" ng-show="user">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Main Chat</h3>
+            </div>
+            <div class="panel-body">
+                    <textarea class="form-control" rows="20"></textarea>
+                <form class="form-inline">
+                        <input type="password" class="form-control" id="messageInput" placeholder="Mensaje..." ng-model="message">
+                    <button type="submit" class="btn btn-default pull-right" ng-submit="logUserIn()">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!--<div class="col-md-4">.col-md-4</div>-->
+</div>
+</div>
+<script type="text/javascript" src="/js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+</body>
+</html>
