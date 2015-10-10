@@ -12,13 +12,15 @@ object ChatManager {
 
   def getMessages(roundTrip: RoundTripHandlerFunc): Unit = {
     if(!users.exists(_.hashCode() == roundTrip.hashCode())) {
+      println("adding user")
       users = roundTrip :: users
     }
-    roundTrip.send(Extraction.decompose(messages))
+    roundTrip.send(Extraction.decompose(messages.reverse))
   }
 
   def newMessage(msg: Message): Unit = {
     messages = msg :: messages
+    println("sending .. . ")
     users.foreach(_.send(Extraction.decompose(msg)))
   }
 }

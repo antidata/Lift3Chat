@@ -20,22 +20,24 @@ angular
       var promise = pageFunctions.getMessages();
       promise.then(function(data) {
         $scope.$apply(function() {
-          $scope.messages = $scope.messages + data;
+          if(data.length) {
+            $scope.messages = $scope.messages.concat(data);
+          } else {
+            $scope.messages.push(data);
+          }
         })
       });
     };
 
     $scope.sendMessage = function() {
       var promise = pageFunctions.sendMessage({name: $scope.user.name, text: $scope.message});
-      promise.then(function(data) {
-        $scope.$apply(function() {
-          $scope.messages = $scope.messages + data;
-        })
-      });
+      $scope.message = '';
     };
 
 
     $scope.getMessageStyle = function(name) {
       return $scope.user.name == name ? "color:blue; text-align:right;" : "color:red;";
     };
+
+    $scope.getMessages();
   });
