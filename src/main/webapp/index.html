@@ -61,7 +61,7 @@
                         <h3 class="panel-title">Main Chat</h3>
                     </div>
                     <div class="panel-body">
-                            <div class="chat" >
+                            <div class="chat" id="chatDiv" >
                                 <ul class="list-group" ng-repeat="message in messages">
                                     <li class="list-group-item" ><div style="font-weight:bold; {{getMessageStyle(message.name)}}>"> {{message.name}}</div> {{message.text}}</li>
                                 </ul>
