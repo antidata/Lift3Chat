@@ -17,7 +17,7 @@
     <![endif]-->
 </head>
 
-<body ng-app="LiftChat">
+<body ng-app="LiftChat" >
 <nav class="navbar navbar-default">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -26,6 +26,7 @@
         </div>
     </div><!-- /.container-fluid -->
 </nav>
+<div ng-controller="ChatController">
 <div class="row" ng-show="!user">
     <div class="col-md-4"></div>
     <div class="col-md-4">
@@ -58,10 +59,20 @@
                 <h3 class="panel-title">Main Chat</h3>
             </div>
             <div class="panel-body">
-                    <textarea class="form-control" rows="20"></textarea>
+                    <div style="height:100%; maxheight:500px; overflow-y:auto;" >
+                        <ul class="list-group" ng-repeat="{{message in messages}}">
+                            <li class="list-group-item">{message.name + ": " + message.text}</li>
+                        </ul>
+                    </div>
                 <form class="form-inline">
-                        <input type="password" class="form-control" id="messageInput" placeholder="Mensaje..." ng-model="message">
-                    <button type="submit" class="btn btn-default pull-right" ng-submit="logUserIn()">Submit</button>
+                    <div class="row">
+                        <div class="col-md-10">
+                            <input class="form-control" id="messageInput" placeholder="Mensaje..." ng-model="message" style="width:100%">
+                        </div>
+                        <div class="col-md-2">
+                            <button type="submit" class="btn btn-default" ng-submit="logUserIn()" >Enviar</button>
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>
@@ -71,5 +82,6 @@
 </div>
 <script type="text/javascript" src="/js/jquery-2.1.4.min.js"></script>
 <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+</div>
 </body>
 </html>
